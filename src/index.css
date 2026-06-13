@@ -1,0 +1,37 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html,
+body,
+#root {
+  height: 100%;
+  margin: 0;
+  overflow: hidden;
+  background: #e6edf2;
+}
+
+::selection {
+  background: #58d5f2;
+  color: #101217;
+}
+
+/* blinking caret for the headline */
+@keyframes caret {
+  0%, 49% { opacity: 1; }
+  50%, 100% { opacity: 0; }
+}
+.caret { animation: caret 1.1s steps(1) infinite; }
+
+@media (prefers-reduced-motion: reduce) {
+  .caret { animation: none; }
+}
+
+/* slim scrollbar for the on-visor screen */
+.screen-scroll::-webkit-scrollbar { width: 4px; }
+.screen-scroll::-webkit-scrollbar-track { background: transparent; }
+.screen-scroll::-webkit-scrollbar-thumb {
+  background: rgba(88, 213, 242, 0.35);
+  border-radius: 4px;
+}
+.screen-scroll { scrollbar-width: thin; scrollbar-color: rgba(88,213,242,0.35) transparent; }
