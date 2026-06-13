@@ -6,7 +6,7 @@ import Robot from "./components/Robot";
 import CameraRig from "./components/CameraRig";
 
 const CONTACT = {
-  email: "siddhantjena13@gmail.com",
+  email: "siddhant_jena@outlook.com",
   linkedin: "https://www.linkedin.com/in/siddhantjena", 
   github: "https://github.com/siddhantjena13",
 };
