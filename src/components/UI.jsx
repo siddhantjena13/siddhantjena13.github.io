@@ -21,7 +21,7 @@ const SECTIONS = [
       {
         head: "Remitly — Incoming SWE Intern",
         meta: "Summer 2026",
-        body: "Joining Remitly's cross-border money-movement platform on the agentic ai team build and ship production backend services that move funds for immigrants and their families at scale.",
+        body: "Joining Remitly's cross-border money-movement platform on the agentic ai team to build and ship production backend services that move funds for immigrants and their families at scale.",
       },
       {
         head: "CureBay — SWE Intern",
