@@ -10,8 +10,8 @@ const SECTIONS = [
     items: [
       {
         head: "Siddhant Jena",
-        meta: "UW CS '27",
-        body: "Hi! I'm a Computer Science undergraduate at the University of Washington (Class of '27). I currently have a research focus on reinforcement learning, but have also done work in computational biology/neuroscience. Outside of school I train in Muay Thai / MMA, love watching movies, and enjoy the outdoors.",
+        meta: "UW CS '28",
+        body: "Hi! I'm a Computer Science undergraduate at the University of Washington (Class of '28). My research focus is reinforcement learning and multi-agent theory of mind, with a parallel line of work in computational biology. Outside of school I train in Muay Thai / MMA, love watching movies, and enjoy the outdoors.",
       },
     ],
   },
@@ -19,14 +19,14 @@ const SECTIONS = [
     key: "ENGINEERING",
     items: [
       {
-        head: "Remitly — Incoming SWE Intern",
+        head: "Remitly — SWE Intern",
         meta: "Summer 2026",
-        body: "Joining Remitly's cross-border money-movement platform on the agentic ai team to build and ship production backend services that move funds for immigrants and their families at scale.",
+        body: "Built a causal churn model in Python that replaced correlational signals from the existing NPV inactivity model with estimates of why customers actually leave. Architected SQL pipelines over large-scale transaction data on a Lakehouse, adjusting for confounders, and shipped treatment-effect estimates that let risk and marketing rank interventions by causal lift instead of raw churn.",
       },
       {
         head: "CureBay — SWE Intern",
-        meta: "Prior",
-        body: "Built full-stack features for a rural digital-healthcare platform — APIs and interfaces connecting patients in underserved areas to remote clinicians and e-clinics.",
+        meta: "2024",
+        body: "Shipped a SkyFlow privacy-vault integration tokenizing patient PII, bringing a rural digital-healthcare platform into compliance with India's data protection regulations. Built REST API connectors in Java against MySQL (auth, data mapping, error handling) with a distributed Agile team.",
       },
     ],
   },
@@ -35,13 +35,13 @@ const SECTIONS = [
     items: [
       {
         head: "Social RL Lab · UW",
-        meta: "Advisor: Natasha Jaques",
-        body: "Developing a standalone probabilistic-programming pipeline for theory-of-mind inference in multi-agent settings, using the memo framework with LLM-generated candidate programs.",
+        meta: "Jaques & Kleiman-Weiner",
+        body: "Building a probabilistic program synthesis system for theory-of-mind inference in multi-agent settings: LLM-guided generation of memo programs that output action distributions, with Bayesian weight updates over program hypotheses. Evaluating on gridworld and embodied benchmarks against deterministic-program baselines; targeting an ICLR 2027 submission. Also engineered a full IPPO implementation in MultiGrid on CleanRL (GAE, PPO clipping, buffer management).",
       },
       {
         head: "Srivatsan Lab · Fred Hutch",
         meta: "CoDEM",
-        body: "Building CoDEM, a multimodal embedding model that co-embeds DNA, RNA, and protein sequences into a single shared latent space to enable cross-modal biological inference.",
+        body: "Built CoDEM (Central Dogma Embedding Model), co-embedding DNA, RNA, and protein into a shared 512-d latent space via frozen encoders (NT-v2, RNA-FM, ESM-2); Recall@5 = 1.0 on cancer-gene triplets. Trained a latent dynamics module with Conditional Flow Matching on 82 ClinVar mutation pairs, and shipped decoder heads for 54-tissue expression and protein stability (ddG, Pearson r = 0.434).",
       },
     ],
   },
@@ -49,14 +49,14 @@ const SECTIONS = [
     key: "PROJECTS",
     items: [
       {
-        head: "ToM Inference Pipeline",
-        meta: "memo + LLMs",
-        body: "Bayesian models of other agents written in memo; LLMs draft candidate programs and inference recovers latent goals and beliefs from behavior.",
+        head: "anonlint",
+        meta: "Anonymity linter",
+        body: "Open-source linter that flags identity leaks in PDFs, LaTeX sources, and artifact repos before double-blind submission. The I/O-free core compiles to WebAssembly so papers never leave the author's machine; an adapter layer normalizes inputs into one IR, venue rules live in declarative YAML, and findings carry evidence pointers and calibrated confidence.",
       },
       {
-        head: "CoDEM",
-        meta: "Multimodal bio embeddings",
-        body: "Contrastive co-embedding of biological sequences across modalities, producing a shared representation space for DNA, RNA, and protein.",
+        head: "mrf-watch",
+        meta: "Price transparency monitor",
+        body: "Service that crawls and validates US hospital machine-readable pricing files against CMS requirements, exposing an open API and longitudinal compliance history. Crawler built around ETag conditional requests, tiered scheduling, backoff, and CMS spec-version detection.",
       },
       {
         head: "Vision Illusions",
