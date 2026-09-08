@@ -1,6 +1,7 @@
 import CartPole from "../components/CartPole";
 import Findings from "../components/Findings";
 import Pipeline from "../components/Pipeline";
+import PunchCrop from "../components/PunchCrop";
 import { CONTACT, CYAN, FAINT, INK, MONO, MUTED, RULE, SANS } from "../contact";
 
 const SECTIONS = [
@@ -11,10 +12,10 @@ const SECTIONS = [
         title: "rl-from-scratch",
         meta: "Python · NumPy",
         body:
-          "Four policy gradient algorithms — REINFORCE, a learned baseline, A2C, and PPO — implemented from scratch in NumPy on CartPole-v1, with every gradient derived by hand. No autograd and no RL library: the backward passes are written out. Each algorithm is a single file, so the diff between two consecutive files is the algorithm changing and nothing else.",
+          "Four reinforcement learning algorithms — REINFORCE, a learned baseline, A2C, and PPO — built from scratch in NumPy, with no autograd and no RL library. Every gradient is derived by hand, and each algorithm is a single file, so the difference between two files is the algorithm and nothing else. Benchmarked on CartPole: PPO solved it in all three runs.",
         visual: <CartPole />,
         caption:
-          "CartPole-v1, the control task all four are benchmarked on. Across 3 seeds, PPO with GAE solved 3/3 — the same code with a single-step TD advantage solved 0/3.",
+          "CartPole-v1, the balance task all four algorithms are benchmarked on. Across 3 seeds, PPO solved 3/3 — the same code with a weaker advantage estimate solved 0/3.",
         repo: "https://github.com/siddhantjena13/rl-from-scratch",
       },
     ],
@@ -26,21 +27,36 @@ const SECTIONS = [
         title: "mrf-watch",
         meta: "Python · CMS spec",
         body:
-          "Federal law requires every US hospital to publish a machine-readable file listing its prices, including rates negotiated privately with insurers. Enforcement is periodic and complaint-driven, so no continuous public record of compliance exists. mrf-watch fetches each hospital's file, validates it against the required format, and records the result every time — so compliance can be tracked over months rather than sampled once.",
+          "US hospitals are required by law to publish their prices, but nobody checks continuously — enforcement only happens when someone complains. mrf-watch fetches each hospital's price file, validates it against the federal format, and logs the result every time, turning a one-off audit into an ongoing public record. Early stage: the architecture is in place and the crawler is in progress.",
         visual: <Pipeline />,
         caption:
-          "Crawl and validation path. Early stage: the skeleton and architecture exist, the crawler is in progress, and no hospitals are being monitored yet.",
+          "The path a hospital's file takes through the system. No hospitals are being monitored yet.",
         repo: "https://github.com/siddhantjena13/mrf-watch",
       },
       {
         title: "anonlint",
         meta: "Python · WebAssembly",
         body:
-          "Double-blind review only works if the paper is actually anonymous. Authors strip their names from the title page and forget the rest — the /Author field the PDF exporter silently filled in, a self-citation phrased as a signature, an absolute image path baked into the LaTeX. anonlint reports every likely leak, where it is, and how to fix it. The checking core performs no file or network access of its own, so it compiles to WebAssembly and runs entirely in the browser tab: unsubmitted work is never uploaded. It reports and advises; it never edits the paper.",
+          "Double-blind review breaks when authors leave their identity in the file — hidden PDF metadata, a self-citation, an image path with their name in it. anonlint scans a paper and reports every likely leak, where it is, and how to fix it. It compiles to WebAssembly and runs entirely in the browser, so unsubmitted work is never uploaded. Pre-alpha: the checks are specified, the tool is not yet usable.",
         visual: <Findings />,
         caption:
-          "Sample report. Findings carry a confidence score, and severity is set per venue — the same finding can be a hard error at one conference and a note at another. Pre-alpha: the checks and report format are specified, the tool is not yet usable.",
+          "Sample report. Each finding carries a confidence score, and severity is set per venue — the same leak can be a hard error at one conference and a note at another.",
         repo: "https://github.com/siddhantjena13/anonlint",
+      },
+    ],
+  },
+  {
+    key: "Machine Learning",
+    projects: [
+      {
+        title: "cross-domain-boxing-recognition",
+        meta: "Python · VideoMAE",
+        body:
+          "A video model that watches a clip of Olympic boxing and calls the punch: head shot, body shot, miss, or blocked. Built by fine-tuning VideoMAE on 4,609 punches labelled by licensed referees. Every bout is filmed by two cameras at once, so the data is split by camera angle — otherwise the same punch lands in both training and testing and the score means nothing. Correct on 71% of unseen clips, against 53% for always guessing the most common answer.",
+        visual: <PunchCrop />,
+        caption:
+          "Each punch becomes a 16-frame clip cropped to the attacker. That crop is also the blind spot: blocks are the hardest class to call, because the throw looks the same either way — what makes it a block is the defender's hands, just outside the box.",
+        repo: "https://github.com/siddhantjena13/cross-domain-boxing-recognition",
       },
     ],
   },

@@ -179,9 +179,56 @@ body {
   }
 }
 
+/* ------------------------------------------------------------------ */
+/* boxing punch crop                                                   */
+/* ------------------------------------------------------------------ */
+
+/* A step into the punch rather than an arm extension: translating the whole
+   figure keeps the limbs joined. 8px is the most it can travel before the
+   lead glove would cross the right edge of the crop box. */
+@keyframes bx-lunge {
+  0%, 18%   { transform: translateX(0); }
+  30%       { transform: translateX(8px); }
+  44%       { transform: translateX(6px); }
+  62%, 100% { transform: translateX(0); }
+}
+
+@keyframes bx-playhead {
+  from { transform: translateX(0); }
+  to   { transform: translateX(158px); }
+}
+
+@keyframes bx-lock {
+  0%, 100% { opacity: 1; }
+  50%      { opacity: 0.62; }
+}
+
+.bx-attacker,
+.bx-playhead {
+  /* keeps the px translations in the SVG's own coordinates */
+  transform-box: view-box;
+}
+
+.bx-attacker {
+  animation: bx-lunge 4s cubic-bezier(0.4, 0, 0.4, 1) infinite;
+}
+
+/* steps(16) advances one frame at a time, so the playhead lands on each tick
+   instead of sliding between them. */
+.bx-playhead {
+  animation: bx-playhead 4s steps(16, end) infinite;
+}
+
+.bx-brackets {
+  animation: bx-lock 4s ease-in-out infinite;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .cp-cart,
-  .cp-pole {
+  .cp-pole,
+  .bx-attacker,
+  .bx-playhead,
+  .bx-brackets {
     animation: none;
   }
 }
