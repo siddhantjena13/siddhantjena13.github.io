@@ -47,28 +47,8 @@ const SECTIONS = [
   },
   {
     key: "PROJECTS",
-    items: [
-      {
-        head: "anonlint",
-        meta: "Anonymity linter",
-        body: "Open-source linter that flags identity leaks in PDFs, LaTeX sources, and artifact repos before double-blind submission. The I/O-free core compiles to WebAssembly so papers never leave the author's machine; an adapter layer normalizes inputs into one IR, venue rules live in declarative YAML, and findings carry evidence pointers and calibrated confidence.",
-      },
-      {
-        head: "mrf-watch",
-        meta: "Price transparency monitor",
-        body: "Service that crawls and validates US hospital machine-readable pricing files against CMS requirements, exposing an open API and longitudinal compliance history. Crawler built around ETag conditional requests, tiered scheduling, backoff, and CMS spec-version detection.",
-      },
-      {
-        head: "Vision Illusions",
-        meta: "CNNs vs ViTs",
-        body: "Trained ResNet-18 and ViT-tiny on geometric regression to probe optical-illusion susceptibility. ResNet-18 was broadly fooled; ViT-tiny showed partial immunity, most clearly on Ponzo.",
-      },
-      {
-        head: "TAG!",
-        meta: "Full Stack Mobile App",
-        body: "Created a full-stack web app to facilitate gamified learning. Users can create/join rooms, answer questions to earn points, and compete on a leaderboard. Built with React, Node.js, and Socket.IO for real-time interactivity.",
-      },
-    ],
+    // The projects page carries the real write-ups, so this panel just points there.
+    items: [{ head: "Go to the projects tab!" }],
   },
 ];
 
@@ -223,7 +203,7 @@ function Terminal() {
               {isOpen && (
                 <div style={{ paddingLeft: 18, paddingTop: 1, paddingBottom: 4 }}>
                   {sec.items.map((it) => (
-                    <div key={it.head} style={{ marginBottom: 6 }}>
+                    <div key={it.head ?? it.body} style={{ marginBottom: 6 }}>
                       <div
                         style={{
                           display: "flex",
@@ -235,21 +215,25 @@ function Terminal() {
                         <span style={{ fontFamily: MONO, fontSize: 8, color: INK, lineHeight: 1.2 }}>
                           {it.head}
                         </span>
-                        <span style={{ fontFamily: MONO, fontSize: 7.5, color: DIM, whiteSpace: "nowrap" }}>
-                          {it.meta}
-                        </span>
+                        {it.meta && (
+                          <span style={{ fontFamily: MONO, fontSize: 7.5, color: DIM, whiteSpace: "nowrap" }}>
+                            {it.meta}
+                          </span>
+                        )}
                       </div>
-                      <p
-                        style={{
-                          margin: "2px 0 0",
-                          fontFamily: MONO,
-                          fontSize: 7.5,
-                          lineHeight: 1.3,
-                          color: BODY,
-                        }}
-                      >
-                        {it.body}
-                      </p>
+                      {it.body && (
+                        <p
+                          style={{
+                            margin: "2px 0 0",
+                            fontFamily: MONO,
+                            fontSize: 7.5,
+                            lineHeight: 1.3,
+                            color: BODY,
+                          }}
+                        >
+                          {it.body}
+                        </p>
+                      )}
                     </div>
                   ))}
                 </div>
